@@ -48,7 +48,20 @@ class RandomWordsState extends State<RandomWords> {
     return ListTile(
         title: Text(pair.asPascalCase, style: _biggerFont),
         trailing: Icon(isSaved ? Icons.favorite : Icons.favorite_border,
-            color: isSaved ? Colors.red : null));
+            color: isSaved ? Colors.red : null),
+        onTap: () {
+          _onTapRow(pair, isSaved);
+        });
+  }
+
+  void _onTapRow(WordPair pair, bool isSaved) {
+    setState(() {
+      if (isSaved) {
+        _isSavedByWordPair.remove(pair);
+      } else {
+        _isSavedByWordPair.add(pair);
+      }
+    });
   }
 }
 
