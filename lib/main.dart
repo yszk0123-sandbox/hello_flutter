@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'pages/home/home_page.dart';
+import 'app/routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         theme: defaultTargetPlatform == TargetPlatform.iOS
             ? _iosTheme
             : _defaultTheme,
-        home: HomePage());
+        initialRoute: initialRoute,
+        routes: routesMap);
   }
 }

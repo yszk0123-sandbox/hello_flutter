@@ -1,39 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../app/layouts/app_layout.dart';
-import '../basic_layout/basic_layout_page.dart';
-import '../chat/chat_page.dart';
-import '../random_words/random_words_page.dart';
+import '../../app/routes.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final List<Widget> list = [
-      ListTile(
-          title: Text('Random Words'),
+    final list = routesList.map((route) {
+      return ListTile(
+          title: Text(route.title),
           onTap: () {
-            return Navigator.of(context)
-                .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-              return RandomWordsPage();
-            }));
-          }),
-      ListTile(
-          title: Text('Basic Layout'),
-          onTap: () {
-            return Navigator.of(context)
-                .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-              return BasicLayoutPage();
-            }));
-          }),
-      ListTile(
-          title: Text('Chart'),
-          onTap: () {
-            return Navigator.of(context)
-                .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-              return ChatPage();
-            }));
-          })
-    ];
+            Navigator.pushNamed(context, route.path);
+          });
+    }).toList();
 
-    return AppLayout(title: 'Examples', child: ListView(children: list));
+    return AppLayout(title: Routes.home.title, child: ListView(children: list));
   }
 }
