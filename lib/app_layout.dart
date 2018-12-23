@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AppLayout extends StatelessWidget {
@@ -11,6 +12,7 @@ class AppLayout extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
+          elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0 : 4,
         ),
         body: child);
   }
