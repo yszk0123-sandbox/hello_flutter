@@ -19,6 +19,7 @@ class ChatScreen extends StatefulWidget {
 class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = TextEditingController();
+  bool _isComposing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               Flexible(
                   child: TextField(
                       controller: _textController,
+                      onChanged: _handleTextChanged,
                       onSubmitted: _handleSubmitted,
                       decoration: InputDecoration.collapsed(
                           hintText: 'Send a message'))),
@@ -63,14 +65,30 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                   margin: EdgeInsets.symmetric(horizontal: 4),
                   child: IconButton(
                     icon: Icon(Icons.send),
-                    onPressed: () => _handleSubmitted(_textController.text),
+                    onPressed: _isComposing
+                        ? () => _handleSubmitted(_textController.text)
+                        : null,
                   ))
             ])));
   }
 
+  void _handleTextChanged(String text) {
+    setState(() {
+      _isComposing = text.length > 0;
+    });
+  }
+
   void _handleSubmitted(String text) {
-    _textController.clear();
+    _clearText();
     _sendMessage(text);
+  }
+
+  void _clearText() {
+    _textController.clear();
+
+    setState(() {
+      _isComposing = false;
+    });
   }
 
   void _sendMessage(String text) {
