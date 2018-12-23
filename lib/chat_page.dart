@@ -7,10 +7,13 @@ class ChatPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Chat'),
         ),
-        body: _buildSample());
+        body: ChatScreen());
   }
+}
 
-  Widget _buildSample() {
+class ChatScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Center(
         child: Container(
             child: Center(child: Container(child: Text('Sample'))),
