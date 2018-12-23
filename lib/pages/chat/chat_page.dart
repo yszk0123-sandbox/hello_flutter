@@ -5,17 +5,18 @@ import '../../app/layouts/app_layout.dart';
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AppLayout(title: 'Chat', child: ChatScreen());
+    return AppLayout(title: 'Chat', child: _ChatScreen());
   }
 }
 
-class ChatScreen extends StatefulWidget {
+class _ChatScreen extends StatefulWidget {
   @override
-  State createState() => ChatScreenState();
+  State createState() => _ChatScreenState();
 }
 
-class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
-  final List<ChatMessage> _messages = <ChatMessage>[];
+class _ChatScreenState extends State<_ChatScreen>
+    with TickerProviderStateMixin {
+  final List<_ChatMessage> _messages = <_ChatMessage>[];
   final TextEditingController _textController = TextEditingController();
   bool _isComposing = false;
 
@@ -46,7 +47,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    for (ChatMessage message in _messages) {
+    for (_ChatMessage message in _messages) {
       message.animationController.dispose();
     }
     super.dispose();
@@ -103,7 +104,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   void _sendMessage(String text) {
-    ChatMessage message = ChatMessage(
+    _ChatMessage message = _ChatMessage(
         text: text,
         animationController: AnimationController(
             duration: Duration(milliseconds: 200), vsync: this));
@@ -115,11 +116,11 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 }
 
-class ChatMessage extends StatelessWidget {
+class _ChatMessage extends StatelessWidget {
   final String text;
   final AnimationController animationController;
 
-  ChatMessage({this.text, this.animationController});
+  _ChatMessage({this.text, this.animationController});
 
   @override
   Widget build(BuildContext context) {

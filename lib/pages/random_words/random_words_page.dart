@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import '../../app/layouts/app_layout.dart';
 
-class RandomWordsPageState extends State<RandomWordsPage> {
+class RandomWordsPage extends StatefulWidget {
+  @override
+  _RandomWordsPageState createState() => _RandomWordsPageState();
+}
+
+class _RandomWordsPageState extends State<RandomWordsPage> {
   final _suggestions = <WordPair>[];
   final Set<WordPair> _isSavedByWordPair = Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18.0);
@@ -71,9 +76,4 @@ class RandomWordsPageState extends State<RandomWordsPage> {
       }
     });
   }
-}
-
-class RandomWordsPage extends StatefulWidget {
-  @override
-  RandomWordsPageState createState() => RandomWordsPageState();
 }
