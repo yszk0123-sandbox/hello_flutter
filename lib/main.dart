@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'random_words.dart';
 import 'basic_layout.dart';
+import 'chat_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +35,14 @@ class Home extends StatelessWidget {
             return Navigator.of(context)
                 .push(MaterialPageRoute<void>(builder: (BuildContext context) {
               return BasicLayout();
+            }));
+          }),
+      ListTile(
+          title: Text('Chart'),
+          onTap: () {
+            return Navigator.of(context)
+                .push(MaterialPageRoute<void>(builder: (BuildContext context) {
+              return ChatPage();
             }));
           })
     ];
