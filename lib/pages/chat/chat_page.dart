@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'app_layout.dart';
+import '../../app/layouts/app_layout.dart';
 
 class ChatPage extends StatelessWidget {
   @override

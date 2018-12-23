@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'app_layout.dart';
+import '../../app/layouts/app_layout.dart';
 
-class BasicLayout extends StatelessWidget {
+class BasicLayoutPage extends StatelessWidget {
   final TextStyle _style = TextStyle(
       color: Colors.orange[300], fontSize: 24, fontWeight: FontWeight.w900);
   final BoxDecoration _gradientDecoration = BoxDecoration(

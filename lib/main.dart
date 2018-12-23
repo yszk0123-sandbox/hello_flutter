@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'random_words.dart';
-import 'basic_layout.dart';
-import 'chat_page.dart';
-import 'app_layout.dart';
+import 'app/layouts/app_layout.dart';
+import 'pages/basic_layout/basic_layout_page.dart';
+import 'pages/chat/chat_page.dart';
+import 'pages/random_words/random_words_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
           onTap: () {
             return Navigator.of(context)
                 .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-              return RandomWords();
+              return RandomWordsPage();
             }));
           }),
       ListTile(
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
           onTap: () {
             return Navigator.of(context)
                 .push(MaterialPageRoute<void>(builder: (BuildContext context) {
-              return BasicLayout();
+              return BasicLayoutPage();
             }));
           }),
       ListTile(
