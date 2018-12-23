@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'app_layout.dart';
 
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
@@ -56,11 +57,8 @@ class RandomWordsState extends State<RandomWords> {
       final List<Widget> divided =
           ListTile.divideTiles(context: context, tiles: tiles).toList();
 
-      return Scaffold(
-          appBar: AppBar(
-            title: const Text('Saved Suggestions'),
-          ),
-          body: ListView(children: divided));
+      return AppLayout(
+          title: 'Saved Suggestions', child: ListView(children: divided));
     }));
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'random_words.dart';
 import 'basic_layout.dart';
 import 'chat_page.dart';
+import 'app_layout.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,10 +48,6 @@ class Home extends StatelessWidget {
           })
     ];
 
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Examples'),
-        ),
-        body: ListView(children: list));
+    return AppLayout(title: 'Examples', child: ListView(children: list));
   }
 }

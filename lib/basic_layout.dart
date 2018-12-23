@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_layout.dart';
 
 class BasicLayout extends StatelessWidget {
   final TextStyle _style = TextStyle(
@@ -15,11 +16,7 @@ class BasicLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Basic Layout'),
-        ),
-        body: _buildSample());
+    return AppLayout(title: 'Basic Layout', child: _buildSample());
   }
 
   Widget _buildSample() {
