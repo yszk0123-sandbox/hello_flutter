@@ -24,26 +24,34 @@ const String initialRoute = RoutingPath.home;
 
 final List<_Route> routesList = [
   _Route(
-      title: 'Home',
-      path: RoutingPath.home,
-      builder: (BuildContext context) => HomePage()),
+    title: 'Home',
+    path: RoutingPath.home,
+    builder: (BuildContext context) => HomePage(),
+  ),
   _Route(
-      path: RoutingPath.animation,
-      title: 'Animation',
-      builder: (BuildContext context) => AnimationPage()),
+    path: RoutingPath.animation,
+    title: 'Animation',
+    builder: (BuildContext context) => AnimationPage(),
+  ),
   _Route(
-      path: RoutingPath.basicLayout,
-      title: 'Basic Layout',
-      builder: (BuildContext context) => BasicLayoutPage()),
+    path: RoutingPath.basicLayout,
+    title: 'Basic Layout',
+    builder: (BuildContext context) => BasicLayoutPage(),
+  ),
   _Route(
-      path: RoutingPath.chat,
-      title: 'Chat',
-      builder: (BuildContext context) => ChatPage()),
+    path: RoutingPath.chat,
+    title: 'Chat',
+    builder: (BuildContext context) => ChatPage(),
+  ),
   _Route(
-      path: RoutingPath.randomWords,
-      title: 'Random Words',
-      builder: (BuildContext context) => RandomWordsPage()),
+    path: RoutingPath.randomWords,
+    title: 'Random Words',
+    builder: (BuildContext context) => RandomWordsPage(),
+  ),
 ];
 
 Map<String, WidgetBuilder> routesMap = Map.fromEntries(
-    routesList.map((_Route route) => MapEntry(route.path, route.builder)));
+  routesList.map(
+    (_Route route) => MapEntry(route.path, route.builder),
+  ),
+);

@@ -7,10 +7,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final list = routesList.map((route) {
       return ListTile(
-          title: Text(route.title),
-          onTap: () {
-            Navigator.pushNamed(context, route.path);
-          });
+        title: Text(route.title),
+        onTap: () {
+          Navigator.pushNamed(context, route.path);
+        },
+      );
     }).toList();
 
     return AppLayout(title: 'Home', child: ListView(children: list));

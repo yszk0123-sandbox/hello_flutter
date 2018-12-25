@@ -5,7 +5,10 @@ import '../../app/layouts/app_layout.dart';
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AppLayout(title: 'Chat', child: _ChatScreen());
+    return AppLayout(
+      title: 'Chat',
+      child: _ChatScreen(),
+    );
   }
 }
 
@@ -26,21 +29,24 @@ class _ChatScreenState extends State<_ChatScreen>
       child: Column(
         children: <Widget>[
           Flexible(
-              child: ListView.builder(
-            padding: EdgeInsets.all(8),
-            reverse: true,
-            itemBuilder: (_, int index) => _messages[index],
-            itemCount: _messages.length,
-          )),
+            child: ListView.builder(
+              padding: EdgeInsets.all(8),
+              reverse: true,
+              itemBuilder: (_, int index) => _messages[index],
+              itemCount: _messages.length,
+            ),
+          ),
           Divider(height: 1),
           Container(
-              decoration: BoxDecoration(color: Theme.of(context).cardColor),
-              child: _buildTextComposer())
+            decoration: BoxDecoration(color: Theme.of(context).cardColor),
+            child: _buildTextComposer(),
+          )
         ],
       ),
       decoration: Theme.of(context).platform == TargetPlatform.iOS
           ? BoxDecoration(
-              border: Border(top: BorderSide(color: Colors.grey[200])))
+              border: Border(top: BorderSide(color: Colors.grey[200])),
+            )
           : null,
     );
   }
@@ -55,33 +61,41 @@ class _ChatScreenState extends State<_ChatScreen>
 
   Widget _buildTextComposer() {
     return IconTheme(
-        data: IconThemeData(color: Theme.of(context).accentColor),
-        child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 8),
-            child: Row(children: <Widget>[
-              Flexible(
-                  child: TextField(
-                      controller: _textController,
-                      onChanged: _handleTextChanged,
-                      onSubmitted: _handleSubmitted,
-                      decoration: InputDecoration.collapsed(
-                          hintText: 'Send a message'))),
-              Container(
-                  margin: EdgeInsets.symmetric(horizontal: 4),
-                  child: Theme.of(context).platform == TargetPlatform.iOS
-                      ? CupertinoButton(
-                          child: Text('Send'),
-                          onPressed: _isComposing
-                              ? () => _handleSubmitted(_textController.text)
-                              : null,
-                        )
-                      : IconButton(
-                          icon: Icon(Icons.send),
-                          onPressed: _isComposing
-                              ? () => _handleSubmitted(_textController.text)
-                              : null,
-                        ))
-            ])));
+      data: IconThemeData(color: Theme.of(context).accentColor),
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          children: <Widget>[
+            Flexible(
+              child: TextField(
+                controller: _textController,
+                onChanged: _handleTextChanged,
+                onSubmitted: _handleSubmitted,
+                decoration: InputDecoration.collapsed(
+                  hintText: 'Send a message',
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4),
+              child: Theme.of(context).platform == TargetPlatform.iOS
+                  ? CupertinoButton(
+                      child: Text('Send'),
+                      onPressed: _isComposing
+                          ? () => _handleSubmitted(_textController.text)
+                          : null,
+                    )
+                  : IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: _isComposing
+                          ? () => _handleSubmitted(_textController.text)
+                          : null,
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void _handleTextChanged(String text) {
@@ -105,9 +119,12 @@ class _ChatScreenState extends State<_ChatScreen>
 
   void _sendMessage(String text) {
     _ChatMessage message = _ChatMessage(
-        text: text,
-        animationController: AnimationController(
-            duration: Duration(milliseconds: 200), vsync: this));
+      text: text,
+      animationController: AnimationController(
+        duration: Duration(milliseconds: 200),
+        vsync: this,
+      ),
+    );
 
     setState(() {
       _messages.insert(0, message);
@@ -127,29 +144,38 @@ class _ChatMessage extends StatelessWidget {
     const String _name = 'Your Name';
 
     return SizeTransition(
-        sizeFactor:
-            CurvedAnimation(parent: animationController, curve: Curves.easeOut),
-        axisAlignment: 0,
-        child: Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            child: Row(
+      sizeFactor: CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeOut,
+      ),
+      axisAlignment: 0,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              child: CircleAvatar(child: Text(_name[0])),
+            ),
+            Expanded(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 16),
-                    child: CircleAvatar(child: Text(_name[0])),
+                  Text(
+                    _name,
+                    style: Theme.of(context).textTheme.subhead,
                   ),
-                  Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(_name,
-                              style: Theme.of(context).textTheme.subhead),
-                          Container(
-                              margin: EdgeInsets.only(top: 5),
-                              child: Text(text))
-                        ]),
+                  Container(
+                    margin: EdgeInsets.only(top: 5),
+                    child: Text(text),
                   )
-                ])));
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
