@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../pages/animation/animation_page.dart';
 import '../pages/basic_layout/basic_layout_page.dart';
 import '../pages/chat/chat_page.dart';
+import '../pages/drawer/drawer_page.dart';
 import '../pages/home/home_page.dart';
 import '../pages/random_words/random_words_page.dart';
 
@@ -10,6 +11,7 @@ class RoutingPath {
   static const animation = '/animation';
   static const basicLayout = '/basicLayout';
   static const chat = '/chat';
+  static const drawer = '/drawer';
   static const randomWords = '/randomWords';
 }
 
@@ -42,6 +44,11 @@ final List<_Route> routesList = [
     path: RoutingPath.chat,
     title: 'Chat',
     builder: (BuildContext context) => ChatPage(),
+  ),
+  _Route(
+    path: RoutingPath.drawer,
+    title: 'Drawer',
+    builder: (BuildContext context) => DrawerPage(),
   ),
   _Route(
     path: RoutingPath.randomWords,
