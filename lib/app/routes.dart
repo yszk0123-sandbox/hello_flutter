@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/animation/animation_page.dart';
 import '../pages/basic_layout/basic_layout_page.dart';
 import '../pages/chat/chat_page.dart';
 import '../pages/home/home_page.dart';
@@ -6,6 +7,7 @@ import '../pages/random_words/random_words_page.dart';
 
 class RoutingPath {
   static const home = '/';
+  static const animation = '/animation';
   static const basicLayout = '/basicLayout';
   static const chat = '/chat';
   static const randomWords = '/randomWords';
@@ -25,6 +27,10 @@ final List<_Route> routesList = [
       title: 'Home',
       path: RoutingPath.home,
       builder: (BuildContext context) => HomePage()),
+  _Route(
+      path: RoutingPath.animation,
+      title: 'Animation',
+      builder: (BuildContext context) => AnimationPage()),
   _Route(
       path: RoutingPath.basicLayout,
       title: 'Basic Layout',
