@@ -13,6 +13,6 @@ class HomePage extends StatelessWidget {
           });
     }).toList();
 
-    return AppLayout(title: Routes.home.title, child: ListView(children: list));
+    return AppLayout(title: 'Home', child: ListView(children: list));
   }
 }

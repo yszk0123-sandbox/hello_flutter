@@ -20,30 +20,23 @@ class _Route {
 
 const String initialRoute = RoutingPath.home;
 
-class Routes {
-  static final home = _Route(
+final List<_Route> routesList = [
+  _Route(
       title: 'Home',
       path: RoutingPath.home,
-      builder: (BuildContext context) => HomePage());
-  static final basicLayout = _Route(
+      builder: (BuildContext context) => HomePage()),
+  _Route(
       path: RoutingPath.basicLayout,
       title: 'Basic Layout',
-      builder: (BuildContext context) => BasicLayoutPage());
-  static final chat = _Route(
+      builder: (BuildContext context) => BasicLayoutPage()),
+  _Route(
       path: RoutingPath.chat,
       title: 'Chat',
-      builder: (BuildContext context) => ChatPage());
-  static final randomWords = _Route(
+      builder: (BuildContext context) => ChatPage()),
+  _Route(
       path: RoutingPath.randomWords,
       title: 'Random Words',
-      builder: (BuildContext context) => RandomWordsPage());
-}
-
-final List<_Route> routesList = [
-  Routes.home,
-  Routes.basicLayout,
-  Routes.chat,
-  Routes.randomWords,
+      builder: (BuildContext context) => RandomWordsPage()),
 ];
 
 Map<String, WidgetBuilder> routesMap = Map.fromEntries(
