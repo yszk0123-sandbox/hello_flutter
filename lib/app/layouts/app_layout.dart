@@ -2,12 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AppLayout extends StatelessWidget {
+  const AppLayout({
+    this.title,
+    this.child,
+    this.drawer,
+    this.floatingActionButton,
+  });
+
   final String title;
   final Widget child;
   final Drawer drawer;
   final FloatingActionButton floatingActionButton;
-
-  AppLayout({this.title, this.child, this.drawer, this.floatingActionButton});
 
   @override
   Widget build(BuildContext context) {

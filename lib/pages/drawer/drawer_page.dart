@@ -6,7 +6,7 @@ class DrawerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppLayout(
       title: 'Drawer',
-      child: Center(child: Text('Drawer')),
+      child: const Center(child: Text('Drawer')),
       drawer: Drawer(child: DrawerContent()),
     );
   }
@@ -18,18 +18,18 @@ class DrawerContent extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        DrawerHeader(
+        const DrawerHeader(
           child: Text('Drawer Header'),
           decoration: BoxDecoration(color: Colors.blue),
         ),
-        ListTile(
+        const ListTile(
           title: Text('Item 1'),
         ),
-        ListTile(
+        const ListTile(
           title: Text('Item 2'),
         ),
         ListTile(
-          title: Text('Close Drawer'),
+          title: const Text('Close Drawer'),
           onTap: () {
             Navigator.pop(context);
           },

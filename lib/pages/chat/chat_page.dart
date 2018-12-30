@@ -30,13 +30,13 @@ class _ChatScreenState extends State<_ChatScreen>
         children: <Widget>[
           Flexible(
             child: ListView.builder(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               reverse: true,
               itemBuilder: (_, int index) => _messages[index],
               itemCount: _messages.length,
             ),
           ),
-          Divider(height: 1),
+          const Divider(height: 1),
           Container(
             decoration: BoxDecoration(color: Theme.of(context).cardColor),
             child: _buildTextComposer(),
@@ -63,7 +63,7 @@ class _ChatScreenState extends State<_ChatScreen>
     return IconTheme(
       data: IconThemeData(color: Theme.of(context).accentColor),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
           children: <Widget>[
             Flexible(
@@ -71,22 +71,22 @@ class _ChatScreenState extends State<_ChatScreen>
                 controller: _textController,
                 onChanged: _handleTextChanged,
                 onSubmitted: _handleSubmitted,
-                decoration: InputDecoration.collapsed(
+                decoration: const InputDecoration.collapsed(
                   hintText: 'Send a message',
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 4),
+              margin: const EdgeInsets.symmetric(horizontal: 4),
               child: Theme.of(context).platform == TargetPlatform.iOS
                   ? CupertinoButton(
-                      child: Text('Send'),
+                      child: const Text('Send'),
                       onPressed: _isComposing
                           ? () => _handleSubmitted(_textController.text)
                           : null,
                     )
                   : IconButton(
-                      icon: Icon(Icons.send),
+                      icon: const Icon(Icons.send),
                       onPressed: _isComposing
                           ? () => _handleSubmitted(_textController.text)
                           : null,
@@ -100,7 +100,7 @@ class _ChatScreenState extends State<_ChatScreen>
 
   void _handleTextChanged(String text) {
     setState(() {
-      _isComposing = text.length > 0;
+      _isComposing = text.isNotEmpty;
     });
   }
 
@@ -118,7 +118,7 @@ class _ChatScreenState extends State<_ChatScreen>
   }
 
   void _sendMessage(String text) {
-    _ChatMessage message = _ChatMessage(
+    final _ChatMessage message = _ChatMessage(
       text: text,
       animationController: AnimationController(
         duration: Duration(milliseconds: 200),
@@ -134,10 +134,10 @@ class _ChatScreenState extends State<_ChatScreen>
 }
 
 class _ChatMessage extends StatelessWidget {
+  const _ChatMessage({this.text, this.animationController});
+
   final String text;
   final AnimationController animationController;
-
-  _ChatMessage({this.text, this.animationController});
 
   @override
   Widget build(BuildContext context) {
@@ -150,12 +150,12 @@ class _ChatMessage extends StatelessWidget {
       ),
       axisAlignment: 0,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
               child: CircleAvatar(child: Text(_name[0])),
             ),
             Expanded(
@@ -167,7 +167,7 @@ class _ChatMessage extends StatelessWidget {
                     style: Theme.of(context).textTheme.subhead,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 5),
+                    margin: const EdgeInsets.only(top: 5),
                     child: Text(text),
                   )
                 ],

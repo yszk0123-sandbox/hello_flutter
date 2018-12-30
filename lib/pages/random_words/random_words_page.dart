@@ -8,17 +8,20 @@ class RandomWordsPage extends StatefulWidget {
 }
 
 class _RandomWordsPageState extends State<RandomWordsPage> {
-  final _suggestions = <WordPair>[];
+  final List<WordPair> _suggestions = <WordPair>[];
   final Set<WordPair> _isSavedByWordPair = Set<WordPair>();
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Startup Name Generator'),
+        title: const Text('Startup Name Generator'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _onPressListButton)
+          IconButton(
+            icon: const Icon(Icons.list),
+            onPressed: _onPressListButton,
+          )
         ],
       ),
       body: _buildSuggestions(),
@@ -28,10 +31,12 @@ class _RandomWordsPageState extends State<RandomWordsPage> {
   Widget _buildSuggestions() {
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, i) {
-        if (i.isOdd) return Divider();
+      itemBuilder: (BuildContext context, int i) {
+        if (i.isOdd) {
+          return const Divider();
+        }
 
-        final index = i ~/ 2;
+        final int index = i ~/ 2;
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
         }

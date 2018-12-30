@@ -5,7 +5,7 @@ import '../../app/routes.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final list = routesList.map((route) {
+    final List<ListTile> list = routesList.map((AppRoute route) {
       return ListTile(
         title: Text(route.title),
         onTap: () {

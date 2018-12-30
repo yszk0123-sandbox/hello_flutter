@@ -26,16 +26,16 @@ class _AnimationPageState extends State<AnimationPage> {
           });
         },
         tooltip: 'Toggle Opacity',
-        child: Icon(Icons.flip),
+        child: const Icon(Icons.flip),
       ),
     );
   }
 }
 
 class _AnimationBox extends StatelessWidget {
-  final bool visible;
-
   const _AnimationBox({@required this.visible});
+
+  final bool visible;
 
   @override
   Widget build(BuildContext context) {

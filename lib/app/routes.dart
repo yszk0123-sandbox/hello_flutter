@@ -7,12 +7,12 @@ import '../pages/home/home_page.dart';
 import '../pages/random_words/random_words_page.dart';
 
 class RoutingPath {
-  static const home = '/';
-  static const animation = '/animation';
-  static const basicLayout = '/basicLayout';
-  static const chat = '/chat';
-  static const drawer = '/drawer';
-  static const randomWords = '/randomWords';
+  static const String home = '/';
+  static const String animation = '/animation';
+  static const String basicLayout = '/basicLayout';
+  static const String chat = '/chat';
+  static const String drawer = '/drawer';
+  static const String randomWords = '/randomWords';
 }
 
 class AppRoute {
@@ -58,8 +58,9 @@ final List<AppRoute> routesList = <AppRoute>[
   ),
 ];
 
-Map<String, WidgetBuilder> routesMap = Map.fromEntries(
+Map<String, WidgetBuilder> routesMap = Map<String, WidgetBuilder>.fromEntries(
   routesList.map(
-    (AppRoute route) => MapEntry(route.path, route.builder),
+    (AppRoute route) =>
+        MapEntry<String, WidgetBuilder>(route.path, route.builder),
   ),
 );
