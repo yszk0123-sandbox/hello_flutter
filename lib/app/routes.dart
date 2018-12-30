@@ -15,42 +15,43 @@ class RoutingPath {
   static const randomWords = '/randomWords';
 }
 
-class _Route {
+class AppRoute {
+  AppRoute({@required this.path, @required this.builder, @required this.title});
+
   final String path;
   final WidgetBuilder builder;
   final String title;
-  _Route({@required this.path, @required this.builder, @required this.title});
 }
 
 const String initialRoute = RoutingPath.home;
 
-final List<_Route> routesList = [
-  _Route(
+final List<AppRoute> routesList = <AppRoute>[
+  AppRoute(
     title: 'Home',
     path: RoutingPath.home,
     builder: (BuildContext context) => HomePage(),
   ),
-  _Route(
+  AppRoute(
     path: RoutingPath.animation,
     title: 'Animation',
     builder: (BuildContext context) => AnimationPage(),
   ),
-  _Route(
+  AppRoute(
     path: RoutingPath.basicLayout,
     title: 'Basic Layout',
     builder: (BuildContext context) => BasicLayoutPage(),
   ),
-  _Route(
+  AppRoute(
     path: RoutingPath.chat,
     title: 'Chat',
     builder: (BuildContext context) => ChatPage(),
   ),
-  _Route(
+  AppRoute(
     path: RoutingPath.drawer,
     title: 'Drawer',
     builder: (BuildContext context) => DrawerPage(),
   ),
-  _Route(
+  AppRoute(
     path: RoutingPath.randomWords,
     title: 'Random Words',
     builder: (BuildContext context) => RandomWordsPage(),
@@ -59,6 +60,6 @@ final List<_Route> routesList = [
 
 Map<String, WidgetBuilder> routesMap = Map.fromEntries(
   routesList.map(
-    (_Route route) => MapEntry(route.path, route.builder),
+    (AppRoute route) => MapEntry(route.path, route.builder),
   ),
 );
