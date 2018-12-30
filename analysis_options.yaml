@@ -12,7 +12,6 @@ analyzer:
     todo: ignore
   exclude:
     - "bin/cache/**"
-    - "build/**"
 
 linter:
   rules:
